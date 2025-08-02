@@ -5,6 +5,8 @@ using UnityEngine;
 public class Hoop: MonoBehaviour {
     public MainFlow MainFlowRef;
     public Rigidbody2D Rigidbody2DRef;
+    public Animator PlayerAnimatorRef;
+
 
     private float _timeToStartGravityOnEdgeTouch = .3f;
     private float _gracePeriodTimeToStartGravityOnEdgeTouch = .5f;
@@ -46,14 +48,18 @@ public class Hoop: MonoBehaviour {
     public void SpinHoop(bool right) {
         // print($"{(right ? "right" : "left")} arrow key is held down");
         float totalSpinForce = _spinForce + (_perfectStreakSpinForceMultiplier * PerfectStreak);
-        float totalUpForce = (_upforce + (_perfectStreakUpForceMultiplier * PerfectStreak)) * (transform.position.y > 1 ? 0 : 1);
+        float totalUpForce = (_upforce + (_perfectStreakUpForceMultiplier * PerfectStreak)) * (transform.position.y > -0.5 ? 0 : 1);
 
         if (!_enableHoopSpin) return;
         if (!right && _hoopIsOnTheRight) {
+            PlayerAnimatorRef.ResetTrigger("moveRight");
+            PlayerAnimatorRef.SetTrigger("moveLeft");
             _hoopIsOnTheRight = false;
             Rigidbody2DRef.AddForce(new Vector2(-totalSpinForce, totalUpForce));
         }
         if (right && !_hoopIsOnTheRight) {
+            PlayerAnimatorRef.ResetTrigger("moveLeft");
+            PlayerAnimatorRef.SetTrigger("moveRight");
             _hoopIsOnTheRight = true;
             Rigidbody2DRef.AddForce(new Vector2(totalSpinForce, totalUpForce));
         }
@@ -64,7 +70,7 @@ public class Hoop: MonoBehaviour {
         if (Time.time - _lastHoopEdgeTouchTime < totalHoopHangTime) {
             Rigidbody2DRef.gravityScale = 0;
         } else {
-            Rigidbody2DRef.gravityScale = 0.1f;
+            // Rigidbody2DRef.gravityScale = 0.1f;
         }
     }
 }

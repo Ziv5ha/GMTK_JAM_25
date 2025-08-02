@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MainFlow: MonoBehaviour {
     public Hoop HoopRef;
-    public Player PlayerRef;
+    public GameObject Player;
+    public GameObject MenuDancingMan;
+    public GameObject GameOverCanvas;
+    public TextMeshProUGUI HighScoreText;
+    public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI StreakText;
     public bool GameRunning;
     public int Score = 0;
     private float _startTime;
@@ -38,6 +44,10 @@ public class MainFlow: MonoBehaviour {
     }
 
     public void HandleScore() {
+
+    }
+
+    public void RestartGame() {
 
     }
 }
