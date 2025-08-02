@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Hoop: MonoBehaviour {
     public MainFlow MainFlowRef;
     public Rigidbody2D Rigidbody2DRef;
     public Animator PlayerAnimatorRef;
+    public TextMeshProUGUI PerfectStreakText;
 
 
     private float _timeToStartGravityOnEdgeTouch = .3f;
@@ -21,6 +23,12 @@ public class Hoop: MonoBehaviour {
     private float _perfectSpinTimeWindowNarrower = .01f;
     private int _perfectStreakSpinForceMultiplier = 10;
     private float _perfectStreakUpForceMultiplier = .1f;
+
+    public void RestartHoop() {
+        transform.position = new Vector3(0, -1.19f, -0.16f);
+        _hoopIsOnTheRight = true;
+        _enableHoopSpin = true;
+    }
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (!MainFlowRef.GameRunning) return;
@@ -42,11 +50,10 @@ public class Hoop: MonoBehaviour {
         } else {
             PerfectStreak = 0;
         }
-        Debug.Log($"!@# PerfectStreak: {PerfectStreak}");
+        PerfectStreakText.text = $"{PerfectStreak}";
     }
 
     public void SpinHoop(bool right) {
-        // print($"{(right ? "right" : "left")} arrow key is held down");
         float totalSpinForce = _spinForce + (_perfectStreakSpinForceMultiplier * PerfectStreak);
         float totalUpForce = (_upforce + (_perfectStreakUpForceMultiplier * PerfectStreak)) * (transform.position.y > -0.5 ? 0 : 1);
 
@@ -70,7 +77,7 @@ public class Hoop: MonoBehaviour {
         if (Time.time - _lastHoopEdgeTouchTime < totalHoopHangTime) {
             Rigidbody2DRef.gravityScale = 0;
         } else {
-            // Rigidbody2DRef.gravityScale = 0.1f;
+            Rigidbody2DRef.gravityScale = 0.1f;
         }
     }
 }

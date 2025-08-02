@@ -370,13 +370,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: eb16e3fbeda9c4b959c35d2979d6581e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 173142694}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: eb16e3fbeda9c4b959c35d2979d6581e, type: 3}
 --- !u!1 &173142692 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: eb16e3fbeda9c4b959c35d2979d6581e, type: 3}
   m_PrefabInstance: {fileID: 173142691}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &173142694
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173142692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 70d41710c0a97476eaabfc6ef5f53a6d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &198427682
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d02dfb35157d942f99016309d76698ed, type: 2}
   m_sharedMaterial: {fileID: 6821360651468057582, guid: d02dfb35157d942f99016309d76698ed, type: 2}
@@ -680,7 +704,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: -10, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &249972557
@@ -757,7 +781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 7.5}
+  m_AnchoredPosition: {x: 20, y: 7.5}
   m_SizeDelta: {x: 110, y: -15}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &250819873
@@ -1341,7 +1365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d02dfb35157d942f99016309d76698ed, type: 2}
   m_sharedMaterial: {fileID: 6821360651468057582, guid: d02dfb35157d942f99016309d76698ed, type: 2}
@@ -1662,7 +1686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &916002934
@@ -1810,11 +1834,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoopRef: {fileID: 1395310077}
   Player: {fileID: 2047467623}
+  StartGameBtn: {fileID: 1817895733}
   MenuDancingMan: {fileID: 173142692}
   GameOverCanvas: {fileID: 1406320535}
   HighScoreText: {fileID: 1179237872}
   ScoreText: {fileID: 212620653}
-  StreakText: {fileID: 718952022}
   GameRunning: 0
   Score: 0
 --- !u!1 &1035236740
@@ -1853,7 +1877,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: 7.5}
+  m_AnchoredPosition: {x: 140, y: 7.5}
   m_SizeDelta: {x: 110, y: -15}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1035236742
@@ -2010,7 +2034,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d02dfb35157d942f99016309d76698ed, type: 2}
   m_sharedMaterial: {fileID: 6821360651468057582, guid: d02dfb35157d942f99016309d76698ed, type: 2}
@@ -2121,7 +2145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: -10, y: -0.000030517578}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1278673677
@@ -2338,7 +2362,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainFlowRef: {fileID: 963194229}
   Rigidbody2DRef: {fileID: 1395310072}
-  PlayerAnimatorRef: {fileID: 0}
+  PlayerAnimatorRef: {fileID: 2047467625}
+  PerfectStreakText: {fileID: 718952022}
   PerfectStreak: 0
 --- !u!1 &1406320535
 GameObject:
@@ -3112,7 +3137,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: 0}
+  m_AnchoredPosition: {x: -350, y: 0}
   m_SizeDelta: {x: 476, y: 179.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1817895735
@@ -3158,7 +3183,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1817895736}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 963194229}
+        m_TargetAssemblyTypeName: MainFlow, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1817895736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3365,7 +3402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1884801499
@@ -3554,7 +3591,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2033456844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 963194229}
+        m_TargetAssemblyTypeName: MainFlow, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2033456844
 MonoBehaviour:
   m_ObjectHideFlags: 0
