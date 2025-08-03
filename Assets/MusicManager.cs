@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
@@ -20,6 +21,30 @@ public class MusicManager : MonoBehaviour
             musicLayers[layerIndex].volume = volume;
         }
     }
+
+    public void FadeLayerVolume(int layerIndex, float targetVolume, float duration)
+    {
+        if (layerIndex >= 0 && layerIndex < musicLayers.Length)
+        {
+            StartCoroutine(FadeVolumeRoutine(musicLayers[layerIndex], targetVolume, duration));
+        }
+    }
+
+    private IEnumerator FadeVolumeRoutine(AudioSource source, float targetVolume, float duration)
+    {
+        float startVolume = source.volume;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            source.volume = Mathf.Lerp(startVolume, targetVolume, elapsed / duration);
+            yield return null;
+        }
+        source.volume = targetVolume;
+
+    }
+
 
     public void ResetMusic()
     {

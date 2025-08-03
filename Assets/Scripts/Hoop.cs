@@ -76,7 +76,7 @@ public class Hoop : MonoBehaviour
             for (int i = 0; i < MusicManagerRef.musicLayers.Length; i++)
             {
                 float targetVolume = (i <= maxEnabledLayer) ? 1f : 0f;
-                MusicManagerRef.SetLayerVolume(i, targetVolume);
+                MusicManagerRef.FadeLayerVolume(i, targetVolume, 1.0f);
             }
 
 
