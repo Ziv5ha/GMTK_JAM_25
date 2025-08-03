@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MainFlow : MonoBehaviour
-{
+public class MainFlow: MonoBehaviour {
     public Hoop HoopRef;
-    public GameObject Player;
+    public Player PlayerRef;
     public GameObject StartGameBtn;
     public GameObject MenuDancingMan;
     public GameObject GameOverCanvas;
     public TextMeshProUGUI HighScoreText;
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI AssistsText;
     public MusicManager MusicManagerRef;
     public bool GameRunning;
     public int Score = 0;
@@ -19,11 +19,13 @@ public class MainFlow : MonoBehaviour
     private float _startTime;
     private float _gracePeriod = 5f;
 
+    public bool Mute = false;
+    public bool PerfectAssist = true;
+
 
     // Start is called before the first frame update
-    void Start()
-    {
-        Player.SetActive(false);
+    void Start() {
+        PlayerRef.gameObject.SetActive(false);
         HoopRef.gameObject.SetActive(false);
         GameOverCanvas.SetActive(false);
 
@@ -31,8 +33,7 @@ public class MainFlow : MonoBehaviour
         HighScoreText.text = $"{_highScore}";
     }
 
-    public void StartGame()
-    {
+    public void StartGame() {
         Score = 0;
         HoopRef.PerfectStreak = 0;
         HoopRef.accumulatedSuccessCounter = 0;
@@ -44,25 +45,24 @@ public class MainFlow : MonoBehaviour
         MenuDancingMan.SetActive(false);
         GameOverCanvas.SetActive(false);
 
-        Player.SetActive(true);
+        PlayerRef.gameObject.SetActive(true);
         HoopRef.gameObject.SetActive(true);
 
         GameRunning = true;
-        HoopRef.SpinHoop(false);
+        HoopRef.SpinHoop(false, true);
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if (!GameRunning) return;
-        if (Input.GetKey("left"))
-        {
-            HoopRef.SpinHoop(false);
+        if (Input.GetKey("left")) {
+            bool playerMoved = PlayerRef.MovePlayer(true);
+            HoopRef.SpinHoop(false, playerMoved);
         }
 
-        if (Input.GetKey("right"))
-        {
-            HoopRef.SpinHoop(true);
+        if (Input.GetKey("right")) {
+            bool playerMoved = PlayerRef.MovePlayer(false);
+            HoopRef.SpinHoop(true, playerMoved);
         }
         HoopRef.HandleHoopGravity(Time.time - _startTime < _gracePeriod);
 
@@ -70,17 +70,19 @@ public class MainFlow : MonoBehaviour
         ScoreText.text = $"{Score}";
     }
 
-    public void HandleGameOver()
-    {
+    public void HandleGameOver() {
         Debug.Log($"!@# Score: {Score}, High Score: {_highScore}");
         GameRunning = false;
-        if (Score > _highScore)
-        {
+        if (Score > _highScore) {
             _highScore = Score;
             HighScoreText.text = $"{_highScore}";
 
             PlayerPrefs.SetInt("highscore", _highScore);
         }
         GameOverCanvas.SetActive(true);
+    }
+    public void TogglePerfectAssist(bool toggle) {
+        PerfectAssist = toggle;
+        AssistsText.text = toggle ? "On" : "Off";
     }
 }
