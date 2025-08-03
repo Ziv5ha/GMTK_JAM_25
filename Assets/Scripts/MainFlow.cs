@@ -13,6 +13,7 @@ public class MainFlow: MonoBehaviour {
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI AssistsText;
     public MusicManager MusicManagerRef;
+    public SoundManager SoundManagerRef;
     public bool GameRunning;
     public int Score = 0;
     private int _highScore = 0;
@@ -38,6 +39,7 @@ public class MainFlow: MonoBehaviour {
         HoopRef.PerfectStreak = 0;
         HoopRef.accumulatedSuccessCounter = 0;
         MusicManagerRef.ResetMusic();
+        SoundManagerRef.PlayButtonClick();
         _startTime = Time.time;
         HoopRef.RestartHoop();
 
