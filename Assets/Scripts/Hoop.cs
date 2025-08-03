@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
 public class Hoop: MonoBehaviour {
     public MainFlow MainFlowRef;
     public Rigidbody2D Rigidbody2DRef;
     public Animator PlayerAnimatorRef;
     public TextMeshProUGUI PerfectStreakText;
+    public MusicManager MusicManagerRef;
 
 
     private float _timeToStartGravityOnEdgeTouch = .3f;
@@ -52,6 +54,15 @@ public class Hoop: MonoBehaviour {
             PerfectStreak = 0;
         }
         PerfectStreakText.text = $"{PerfectStreak}";
+
+        // Update adaptive music 🎵
+        if (MusicManagerRef != null) {
+            int targetActiveLayers = Mathf.Clamp((PerfectStreak / 3) + 1, 1, MusicManagerRef.musicLayers.Length); // +1 since base layer is 0
+            for (int i = 0; i < MusicManagerRef.musicLayers.Length; i++) {
+                float targetVolume = (i < targetActiveLayers) ? 1f : 0f;
+                MusicManagerRef.SetLayerVolume(i, targetVolume);
+            }
+        }
     }
 
     public void SpinHoop(bool right) {
