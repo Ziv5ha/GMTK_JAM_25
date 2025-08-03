@@ -12,7 +12,7 @@ public class MainFlow : MonoBehaviour
     public GameObject GameOverCanvas;
     public TextMeshProUGUI HighScoreText;
     public TextMeshProUGUI ScoreText;
-    public MusicManager MusicManager;
+    public MusicManager MusicManagerRef;
     public bool GameRunning;
     public int Score = 0;
     private int _highScore = 0;
@@ -36,7 +36,7 @@ public class MainFlow : MonoBehaviour
         Score = 0;
         HoopRef.PerfectStreak = 0;
         HoopRef.accumulatedSuccessCounter = 0;
-        MusicManager.ResetMusic();
+        MusicManagerRef.ResetMusic();
         _startTime = Time.time;
         HoopRef.RestartHoop();
 

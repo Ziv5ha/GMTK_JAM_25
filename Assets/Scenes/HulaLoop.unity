@@ -2374,7 +2374,7 @@ MonoBehaviour:
   GameOverCanvas: {fileID: 1406320535}
   HighScoreText: {fileID: 1179237872}
   ScoreText: {fileID: 212620653}
-  MusicManager: {fileID: 81972094}
+  MusicManagerRef: {fileID: 81972094}
   GameRunning: 0
   Score: 0
 --- !u!1 &1035236740
