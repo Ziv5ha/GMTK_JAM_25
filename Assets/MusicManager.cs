@@ -20,4 +20,12 @@ public class MusicManager : MonoBehaviour
             musicLayers[layerIndex].volume = volume;
         }
     }
+
+    public void ResetMusic()
+    {
+        for (int i = 0; i < musicLayers.Length; i++)
+        {
+            musicLayers[i].volume = (i == 0) ? 1f : 0f;
+        }
+    }
 }

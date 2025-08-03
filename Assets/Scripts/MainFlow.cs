@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MainFlow: MonoBehaviour {
+public class MainFlow : MonoBehaviour
+{
     public Hoop HoopRef;
     public GameObject Player;
     public GameObject StartGameBtn;
@@ -11,6 +12,7 @@ public class MainFlow: MonoBehaviour {
     public GameObject GameOverCanvas;
     public TextMeshProUGUI HighScoreText;
     public TextMeshProUGUI ScoreText;
+    public MusicManager MusicManager;
     public bool GameRunning;
     public int Score = 0;
     private int _highScore = 0;
@@ -19,7 +21,8 @@ public class MainFlow: MonoBehaviour {
 
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         Player.SetActive(false);
         HoopRef.gameObject.SetActive(false);
         GameOverCanvas.SetActive(false);
@@ -28,9 +31,12 @@ public class MainFlow: MonoBehaviour {
         HighScoreText.text = $"{_highScore}";
     }
 
-    public void StartGame() {
+    public void StartGame()
+    {
         Score = 0;
         HoopRef.PerfectStreak = 0;
+        HoopRef.accumulatedSuccessCounter = 0;
+        MusicManager.ResetMusic();
         _startTime = Time.time;
         HoopRef.RestartHoop();
 
@@ -46,13 +52,16 @@ public class MainFlow: MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         if (!GameRunning) return;
-        if (Input.GetKey("left")) {
+        if (Input.GetKey("left"))
+        {
             HoopRef.SpinHoop(false);
         }
 
-        if (Input.GetKey("right")) {
+        if (Input.GetKey("right"))
+        {
             HoopRef.SpinHoop(true);
         }
         HoopRef.HandleHoopGravity(Time.time - _startTime < _gracePeriod);
@@ -61,10 +70,12 @@ public class MainFlow: MonoBehaviour {
         ScoreText.text = $"{Score}";
     }
 
-    public void HandleGameOver() {
+    public void HandleGameOver()
+    {
         Debug.Log($"!@# Score: {Score}, High Score: {_highScore}");
         GameRunning = false;
-        if (Score > _highScore) {
+        if (Score > _highScore)
+        {
             _highScore = Score;
             HighScoreText.text = $"{_highScore}";
 
