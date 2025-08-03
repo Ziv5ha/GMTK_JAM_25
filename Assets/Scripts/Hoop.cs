@@ -55,7 +55,7 @@ public class Hoop: MonoBehaviour {
     }
 
     public void SpinHoop(bool right) {
-        float totalSpinForce = _spinForce + (_perfectStreakSpinForceMultiplier * PerfectStreak);
+        float totalSpinForce = _spinForce + (_perfectStreakSpinForceMultiplier * PerfectStreak)+5;
         float totalUpForce = (_upforce + (_perfectStreakUpForceMultiplier * PerfectStreak)) * (transform.position.y > -0.5 ? 0 : 1);
 
         if (!_enableHoopSpin) return;
