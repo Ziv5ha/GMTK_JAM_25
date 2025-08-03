@@ -26,6 +26,7 @@ public class Hoop: MonoBehaviour {
 
     public void RestartHoop() {
         transform.position = new Vector3(0, -1.19f, -0.16f);
+        transform.rotation = Quaternion.identity;
         _hoopIsOnTheRight = true;
         _enableHoopSpin = true;
     }
