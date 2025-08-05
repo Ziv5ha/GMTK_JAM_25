@@ -51,7 +51,8 @@ public class MainFlow: MonoBehaviour {
         HoopRef.gameObject.SetActive(true);
 
         GameRunning = true;
-        HoopRef.SpinHoop(false, true);
+        bool playerMoved = PlayerRef.MovePlayer(true);
+        HoopRef.SpinHoop(false, playerMoved);
     }
 
     // Update is called once per frame
